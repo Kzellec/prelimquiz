@@ -1,0 +1,44 @@
+fun convertTemperature(
+    value: Double,
+    fromUnit: String,
+    toUnit: String
+): Double {
+    return when {
+        fromUnit.equals("Fahrenheit", ignoreCase = true) && toUnit.equals("Celsius", ignoreCase = true) -> {
+            // Fahrenheit to Celsius conversion
+            (value - 32) * 5 / 9
+        }
+        fromUnit.equals("Celsius", ignoreCase = true) && toUnit.equals("Fahrenheit", ignoreCase = true) -> {
+            // Celsius to Fahrenheit conversion
+            (value * 9 / 5) + 32
+        }
+        fromUnit.equals("Celsius", ignoreCase = true) && toUnit.equals("Kelvin", ignoreCase = true) -> {
+            // Celsius to Kelvin conversion
+            value + 273.15
+        }
+        fromUnit.equals("Kelvin", ignoreCase = true) && toUnit.equals("Celsius", ignoreCase = true) -> {
+            // Kelvin to Celsius conversion
+            value - 273.15
+        }
+        fromUnit.equals("Fahrenheit", ignoreCase = true) && toUnit.equals("Kelvin", ignoreCase = true) -> {
+            // Fahrenheit to Kelvin conversion
+            (value - 32) * 5 / 9 + 273.15
+        }
+        fromUnit.equals("Kelvin", ignoreCase = true) && toUnit.equals("Fahrenheit", ignoreCase = true) -> {
+            // Kelvin to Fahrenheit conversion
+            (value - 273.15) * 9 / 5 + 32
+        }
+        else -> {
+            // If the units are the same, or the conversion is not supported, return the original value.
+            value
+        }
+    }
+}
+
+fun main() {
+    val temperature = 32.0 // Change this value to the temperature you want to convert
+    val fromUnit = "Fahrenheit"
+    val toUnit = "Celsius"
+
+    val convertedTemperature = convertTemperature(temperature, fromUnit, toUnit)
+    println("$temperature $fromUnit is $converted
